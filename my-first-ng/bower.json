@@ -1,0 +1,21 @@
+{
+  "name": "my-first-ng",
+  "homepage": "https://github.com/LHLhaoren1/LHLhaoren1.github.io",
+  "authors": [
+    "lihl <lihl@kingsilk.net>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "v1.1.0-rc.5"
+  }
+}
