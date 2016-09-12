@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form demo</title>
+
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css"/>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.js"></script>
+    <script src="../bower_components/angular-material/angular-material.js"></script>
+    <script>
+        angular.module('formExample', ['ngMaterial'])
+                .controller('FormController', ['$scope', function ($scope) {
+
+                }])
+
+    </script>
+    <style>
+        div:hover {
+        }
+    </style>
+</head>
+<body ng-app="formExample">
+
+
+<div layout="row" style="border: 1px solid red;">
+    <div flex="65" layout="column">
+        <div flex layout="row">
+            <div flex="10">img</div>
+            <div flex="65">标题<br/>标题<br/>标题<br/>标题<br/>标题<br/></div>
+            <div flex="15">价格</div>
+            <div flex="10">数量</div>
+        </div>
+        <div flex layout="row">
+            <div flex="10">img</div>
+            <div flex="65">标题</div>
+            <div flex="15">价格</div>
+            <div flex="10">数量</div>
+        </div>
+    </div>
+    <div flex="10" layout-align="center end" layout="row">
+
+        <div>联系人</div>
+    </div>
+    <div flex="10">
+        确认接单
+    </div>
+    <div flex="10">
+        价格
+    </div>
+    <div flex="5">
+        打印
+    </div>
+</div>
+
+
+</body>
+</html>

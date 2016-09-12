@@ -1,0 +1,79 @@
+
+
+  div.motaiWrap div.upWrap {
+    border: 1px solid #ccc;
+    background: #fff;
+    width: 800px;
+  }
+    div.motaiWrap div.upWrap div.upWrap-top {
+      width: 100%;
+      height: 50px;
+      background: #ccc;
+      line-height: 50px;
+      text-indent: 20px;
+      font-size: 16px; }
+    div.motaiWrap div.upWrap div.upWrap-bottom {
+      height: 75px;
+      width: 100%;
+      margin-top: 10px;
+      border-top: 1px solid #ccc; }
+      div.motaiWrap div.upWrap div.upWrap-bottom .btnWrap {
+        margin: 20px auto;
+        width: 175px; }
+        div.motaiWrap div.upWrap div.upWrap-bottom .btnWrap div {
+          width: 65px;
+          height: 30px;
+          border: 1px solid #ccc;
+          border-radius: 3px;
+          text-align: center;
+          float: left;
+          line-height: 30px; }
+        div.motaiWrap div.upWrap div.upWrap-bottom .btnWrap div:hover {
+          cursor: pointer; }
+        div.motaiWrap div.upWrap div.upWrap-bottom .btnWrap div.btn_b {
+          margin-left: 40px; }
+        div.motaiWrap div.upWrap div.upWrap-bottom .btnWrap div.cur {
+          background: #ba9f6e;
+          color: #fff; }
+    div.motaiWrap div.upWrap .upTable {
+      width: 95%;
+      margin: 0 auto;
+      text-align: center; }
+      div.motaiWrap div.upWrap .upTable .t10 {
+        width: 10%; }
+      div.motaiWrap div.upWrap .upTable .t15 {
+        width: 15%; }
+      div.motaiWrap div.upWrap .upTable .t45 {
+        width: 45%;
+        text-align: left;
+        padding-left: 10px; }
+      div.motaiWrap div.upWrap .upTable .t20 {
+        width: 20%; }
+        div.motaiWrap div.upWrap .upTable .t20 .price {
+          margin: 0 auto;
+          width: 70px;
+          border: 1px solid #ccc; }
+        div.motaiWrap div.upWrap .upTable .t20 .oldPrice {
+          color: #ccc; }
+      div.motaiWrap div.upWrap .upTable thead tr {
+        height: 30px;
+        line-height: 30px;
+        border-bottom: 2px solid #ba9f6e;
+        margin-bottom: 10px; }
+      div.motaiWrap div.upWrap .upTable tr td table {
+        width: 100%;
+        margin: 10px 0 10px 0px;
+        border: 1px solid #ccc; }
+        div.motaiWrap div.upWrap .upTable tr td table .commodityImg {
+          width: 70px;
+          height: 70px;
+          margin: 0 0 0 10px; }
+        div.motaiWrap div.upWrap .upTable tr td table .commodityParmer {
+          font-size: 12px;
+          color: #ccc; }
+        div.motaiWrap div.upWrap .upTable tr td table p {
+          margin: 0; }
+        div.motaiWrap div.upWrap .upTable tr td table td {
+          padding: 10px 0; }
+        div.motaiWrap div.upWrap .upTable tr td table .t20 {
+          border-left: 1px solid #ccc; }

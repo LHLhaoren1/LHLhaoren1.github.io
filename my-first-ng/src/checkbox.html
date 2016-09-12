@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>checkbox demo</title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="../bower_components/angular-material/angular-material.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../bower_components/svg-assets-cache/svg-assets-cache.js"></script>
+    <link href="../bower_components/angular-material/angular-material.css" rel="stylesheet"/>
+    <style>
+        .checkboxdemoSelectAll .demo-legend {
+            color: #3F51B5; }
+        .checkboxdemoSelectAll .demo-fieldset {
+            border-style: solid;
+            border-width: 1px;
+            height: 100%; }
+        .checkboxdemoSelectAll .demo-select-all-checkboxes {
+            padding-left: 30px; }
+    </style>
+</head>
+<body ng-app="checkboxDemo3">
+
+<div ng-controller="AppCtrl" class="md-padding demo">
+    <div layout="row" layout-wrap>
+        <div flex="100" layout="column">
+            <div>
+                <!--
+                  In IE, we cannot apply flex directly to <fieldset>
+                  @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
+                -->
+                <fieldset class="demo-fieldset" >
+                    <legend class="demo-legend">Using &lt;md-checkbox&gt; with the 'indeterminate' attribute </legend>
+                    <div layout="row" layout-wrap flex>
+                        <div flex-xs flex="50">
+                            <md-checkbox aria-label="Select All"
+                                         ng-checked="isChecked()"
+                                         md-indeterminate="isIndeterminate()"
+                                         ng-click="toggleAll()">
+                                <span ng-if="isChecked()">Un-</span>Select All
+                            </md-checkbox>
+                        </div>
+                        <div class="demo-select-all-checkboxes" flex="100" ng-repeat="item in items">
+                            <md-checkbox ng-checked="exists(item, selected)" ng-click="toggle(item, selected)">
+                                {{ item }}
+                            </md-checkbox>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+<script>
+    angular.module('checkboxDemo3', ['ngMaterial'])
+            .controller('AppCtrl', function($scope) {
+                $scope.items = [1,2,3,4,5];
+                $scope.selected = [1];
+
+                $scope.isChecked = function() {
+                    return $scope.selected.length === $scope.items.length;
+                };
+                $scope.toggle = function (item, list) {
+                    alert(item, list);
+                    var idx = list.indexOf(item);
+                    if (idx > -1) {
+                        list.splice(idx, 1);
+                    }
+                    else {
+                        list.push(item);
+                    }
+                };
+                $scope.exists = function (item, list) {
+                    return list.indexOf(item) > -1;
+                };
+                $scope.isIndeterminate = function() {
+                    return ($scope.selected.length !== 0 &&
+                    $scope.selected.length !== $scope.items.length);
+                };
+
+                $scope.toggleAll = function() {
+                    if ($scope.selected.length === $scope.items.length) {
+                        $scope.selected = [];
+                    } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
+                        $scope.selected = $scope.items.slice(0);
+                    }
+                };
+            });
+</script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+
+    <script src="../bower_components/angular-material/angular-material.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../bower_components/svg-assets-cache/svg-assets-cache.js"></script>
+    <link href="../bower_components/angular-material/angular-material.css" rel="stylesheet"/>
+    <style>
+        .bottomSheetdemoBasicUsage .md-inline-list-icon-label {
+            display: inline-block;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-top: -10px;
+            height: 24px;
+            vertical-align: middle;
+        }
+
+        .bottomSheetdemoBasicUsage .md-grid-item-content {
+            height: 90px;
+            padding-top: 10px;
+        }
+
+        .bottomSheetdemoBasicUsage .md-grid-item-content md-icon {
+            height: 48px;
+            width: 48px;
+        }
+
+        .bottomSheetdemoBasicUsage .md-grid-text {
+            padding-bottom: 5px;
+        }
+
+        .bottomSheetdemoBasicUsage md-list-item, .bottomSheetdemoBasicUsage md-list-item ._md-list-item-inner {
+            min-height: 48px;
+        }
+
+        .bottomSheetdemoBasicUsage h2 {
+            line-height: 36px;
+            padding-top: 10px;
+        }
+
+        .bottomSheetdemoBasicUsage .md-subheader ._md-subheader-inner {
+            padding: 0;
+        }
+
+        .bottomSheetdemoBasicUsage md-toast .md-toast-content {
+            background-color: #B14141;
+        }
+
+        .bottomSheetdemoBasicUsage md-toast > * {
+            font-weight: bolder;
+        }
+
+        /*
+        Copyright 2016 Google Inc. All Rights Reserved.
+        Use of this source code is governed by an MIT-style license that can be in foundin the LICENSE file at http://material.angularjs.org/license.
+        */
+    </style>
+    <script>
+        angular.module('MyApp', ['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+                .config(function ($mdIconProvider) {
+                    $mdIconProvider
+                            .icon('share-arrow', 'img/icons/share-arrow.svg', 24)
+                            .icon('upload', 'img/icons/upload.svg', 24)
+                            .icon('copy', 'img/icons/copy.svg', 24)
+                            .icon('print', 'img/icons/print.svg', 24)
+                            .icon('hangout', 'img/icons/hangout.svg', 24)
+                            .icon('mail', 'img/icons/mail.svg', 24)
+                            .icon('message', 'img/icons/message.svg', 24)
+                            .icon('copy2', 'img/icons/copy2.svg', 24)
+                            .icon('facebook', 'img/icons/facebook.svg', 24)
+                            .icon('twitter', 'img/icons/twitter.svg', 24);
+                })
+                .controller('BottomSheetExample', function ($scope, $timeout, $mdBottomSheet, $mdToast) {
+                    $scope.alert = '';
+
+                    $scope.showListBottomSheet = function () {
+                        $scope.alert = '';
+                        $mdBottomSheet.show({
+                            templateUrl: 'bottom-sheet-list-template.html',
+                            controller: 'ListBottomSheetCtrl'
+                        }).then(function (clickedItem) {
+                            $scope.alert = clickedItem['name'] + ' clicked!';
+                        });
+                    };
+
+                    $scope.showGridBottomSheet = function () {
+                        $scope.alert = '';
+                        $mdBottomSheet.show({
+                            templateUrl: 'bottom-sheet-grid-template.html',
+                            controller: 'GridBottomSheetCtrl'
+                        }).then(function (clickedItem) {
+                            $mdToast.show(
+                                    $mdToast.simple()
+                                            .textContent(clickedItem['name'] + ' clicked!')
+                                            .position('top right')
+                                            .hideDelay(1500)
+                            );
+                        });
+                    };
+                })
+
+                .controller('ListBottomSheetCtrl', function ($scope, $mdBottomSheet) {
+
+                    $scope.items = [
+                        {name: 'Share', icon: 'share-arrow'},
+                        {name: 'Upload', icon: 'upload'},
+                        {name: 'Copy', icon: 'copy'},
+                        {name: 'Print this page', icon: 'print'},
+                    ];
+
+                    $scope.listItemClick = function ($index) {
+                        var clickedItem = $scope.items[$index];
+                        $mdBottomSheet.hide(clickedItem);
+                    };
+                })
+                .controller('GridBottomSheetCtrl', function ($scope, $mdBottomSheet) {
+                    $scope.items = [
+                        {name: 'Hangout', icon: 'hangout'},
+                        {name: 'Mail', icon: 'mail'},
+                        {name: 'Message', icon: 'message'},
+                        {name: 'Copy', icon: 'copy2'},
+                        {name: 'Facebook', icon: 'facebook'},
+                        {name: 'Twitter', icon: 'twitter'},
+                    ];
+
+                    $scope.listItemClick = function ($index) {
+                        var clickedItem = $scope.items[$index];
+                        $mdBottomSheet.hide(clickedItem);
+                    };
+                });
+
+
+
+    </script>
+</head>
+<body>
+
+<div ng-controller="BottomSheetExample" class="md-padding bottomSheetdemoBasicUsage" ng-cloak="" ng-app="MyApp">
+    <h2 class="md-title">Usage</h2>
+    <p>Bottom sheets can be displayed by clicking one of the buttons below. Once shown, it can be
+        dismissed by either swiping down or clicking in the shaded area.</p>
+    <h2 class="md-title">Actions</h2>
+    <p>Use one of the following buttons to display a bottom sheet.</p>
+    <div class="bottom-sheet-demo inset" layout="row" layout-sm="column" layout-align="center">
+        <md-button flex="50" class="md-primary md-raised" ng-click="showListBottomSheet()">Show as List</md-button>
+        <md-button flex="50" class="md-primary md-raised" ng-click="showGridBottomSheet()">Show as Grid</md-button>
+    </div>
+
+
+    <script type="text/ng-template" id="bottom-sheet-grid-template.html">
+        <md-bottom-sheet
+                class="md-grid" layout="column" ng-cloak>
+            <div layout="row" layout-align="center center">
+                <h4>Since <code>clickOutsideToClose = false</code>, drag down or press ESC to close</h4>
+            </div>
+            <div>
+                <md-list flex layout="row" layout-align="center center">
+                    <md-list-item ng-repeat="item in items">
+                        <div>
+                            <md-button class="md-grid-item-content" ng-click="listItemClick($index)">
+                                <md-icon md-svg-src="{{item.icon}}"></md-icon>
+                                <div class="md-grid-text"> {{ item.name }}</div>
+                            </md-button>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </div>
+        </md-bottom-sheet>
+        <div style="width: 300px;height: 300px;background: red"></div>
+    </script>
+
+
+    <script type="text/ng-template" id="bottom-sheet-list-template.html">
+        <md-bottom-sheet
+                class="md-list md-has-header" ng-cloak>
+            <md-subheader>Comment Actions</md-subheader>
+            <md-list>
+                <md-list-item ng-repeat="item in items">
+
+                    <md-button
+                            ng-click="listItemClick($index)"
+                            md-autofocus="$index == 2"
+                            class="md-list-item-content">
+                        <md-icon md-svg-src="{{item.icon}}"></md-icon>
+                        <span class="md-inline-list-icon-label">{{ item.name }}</span>
+                    </md-button>
+
+                </md-list-item>
+            </md-list>
+        </md-bottom-sheet>
+    </script>
+</div>
+</body>
+</html>

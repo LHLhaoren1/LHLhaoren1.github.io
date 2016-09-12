@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> input-month demo</title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        angular.module('monthExample',[]).controller('DateController',['$scope',function ($scope) {
+            $scope.example={
+              value: new Date()
+            };
+        }]);
+    </script>
+</head>
+<body ng-app="monthExample">
+    <form name="myForm" ng-controller="DateController as dateCtrl">
+        Pike a month in 2016:<input id="exampleInput" type="month" name="input" ng-model="example.value"
+                                placeholder="yyyy-MM" min="2016-01" max="2016-12" required/><br>
+        <span class="error" ng-show="myForm.input.$error.required">Required!</span><br>
+        <span class="error" ng-show="myForm.input.$error.month"> not a valid month!</span><br>
+        <tt> value={{example.value | date:"yyyy-MM"}}</tt><br>
+        <tt>myForm.input.$valid={{myForm.input.$valid}}</tt><br>
+        <tt>myForm.input.$error={{myForm.input.$error}}</tt><br>
+        <tt>myForm.$valid={{myForm.$valid}}</tt><br>
+        <tt>myForm.$error.required={{!!myForm.$error.required}}</tt><br>
+    </form>
+</body>
+</html>

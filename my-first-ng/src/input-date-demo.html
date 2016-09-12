@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input-date demo</title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        angular.module('dateInputExample',[])
+                .controller('DateController',['$scope',function ($scope) {
+                    $scope.example={
+                        value: new Date()
+                    };
+                }])
+
+
+    </script>
+</head>
+<body ng-app="dateInputExample">
+    <form name="myForm" ng-controller="DateController as dateCtrl">
+        Pick a date in 2016:
+        <input type="date" id="exampleInput" name="input" ng-model="example.value"
+            placeholder="yyyy-MM-dd" min="2016-01-01" max="2016-12-30" required/><br>
+        <span class="error" ng-show="myForm.input.$error.required">Required!</span><br>
+        <span class="error" ng-show="myForm.input.$error.date">No a valid date!</span><br>
+        <tt>value ={{example.value | date:'yyyy-MM-dd'}}</tt><br>
+        <tt>myForm.input.$valid={{myForm.input.$valid}}</tt><br>
+        <tt>myForm.input.$error={{myForm.input.$error}}</tt><br>
+        <tt>myForm.$valid={{myForm.$valid}}</tt><br>
+        <tt>myForm.$error.required={{!!myForm.$error.required}}</tt><br>
+    </form>
+</body>
+</html>

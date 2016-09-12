@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="timeExample">
+<head>
+    <meta charset="UTF-8">
+    <title>input-time-demo </title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        angular.module('timeExample',[]).controller('DateController',['$scope',function($scope){
+            $scope.example={
+                value:new Date(1970,0,1,14,57,0)
+            }
+        }]);
+    </script>
+</head>
+<body >
+    <form  name="myForm" ng-controller="DateController as dateCtrl">
+        pick a between 8am and 5pm:
+        <input type="time" id="exampleInput" name="input1" ng-model="example.value"
+        placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required /><br>
+        <span class="error" ng-show="myForm.input1.$error.required">Required!</span>
+        <span class="error" ng-show="myForm.input1.$error.time">
+            not a valid date!
+        </span><br>
+        <tt>value ={{example.value | date:'HH:mm:ss'}}</tt><br>
+        <tt>myForm.input1.$valid={{myForm.input1.$valid}}</tt><br>
+        <tt>myForm.input1.$error={{myForm.input1.$error}}</tt><br>
+    </form>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="../bower_components/angular-material/angular-material.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../bower_components/svg-assets-cache/svg-assets-cache.js"></script>
+    <link href="../bower_components/angular-material/angular-material.css" rel="stylesheet"/>
+
+    <script>
+        angular.module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+
+                .controller('AppCtrl', function($scope, $mdDialog, $mdMedia) {
+                    $scope.status = '  ';
+                    $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+
+
+                    $scope.showConfirm = function(ev) {
+                        // Appending dialog to document.body to cover sidenav in docs app
+                        var confirm = $mdDialog.confirm()
+                                .title('Would you like to delete your debt?')
+                                .textContent('您确定退出登录？')
+                                /*.targetEvent(ev)*/
+                                .ok('确定')
+                                .cancel('取消');
+
+                        $mdDialog.show(confirm)/*.then(function() {
+                            $scope.status = 'You decided to get rid of your debt.';
+                        }, function() {
+                            $scope.status = 'You decided to keep your debt.';
+                        })*/;
+
+                    };
+                });
+    </script>
+    <style>
+       /* .dialogdemoBasicUsage #popupContainer {
+            position: relative; }
+
+        .dialogdemoBasicUsage .footer {
+            width: 100%;
+            text-align: center;
+            margin-left: 20px; }
+
+        .dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+            font-size: 0.8em;
+            margin-top: 50px; }
+
+        .dialogdemoBasicUsage button {
+            width: 200px; }
+
+        .dialogdemoBasicUsage div#status {
+            color: #c60008; }
+
+        .dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
+            margin-bottom: 0; }*/
+
+
+
+    </style>
+</head>
+<body>
+<div ng-controller="AppCtrl" class="md-padding dialogdemoBasicUsage" id="popupContainer" ng-cloak="" ng-app="MyApp">
+
+
+    <div class="dialog-demo-content" layout="row" layout-wrap="" layout-margin="" layout-align="center">
+
+        <md-button class="md-primary md-raised" ng-click="showConfirm($event)">
+            Confirm Dialog
+        </md-button>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>

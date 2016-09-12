@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input-week-demo</title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        angular.module('weekExample',[]).controller('DateController',['$scope',function ($scope) {
+            $scope.example={
+                value:new Date(2016,0,3)
+            }
+        }]);
+    </script>
+</head>
+<body ng-app="weekExample">
+    <form name="myForm" ng-controller="DateController as dateCtrl">
+        Pick a date between in 2013:
+        <input id="exampleInput" type="week" name="input" ng-model="example.value"
+            placeholder="YYYY-W##" min="2016-W32" max="2016-W52" required/><br>
+        <span class="error" ng-show="myForm.input.$error.required">Required!</span><br>
+        <span class="error" ng-show="myForm.input.$error.week"> Not a valid date!!</span><br>
+        <tt>value ={{example.value | date:'YYYY-Www'}}</tt><br>
+        <tt>myForm.input.$valid ={{myForm.input.$valid}}</tt><br>
+        <tt>myForm.input.$error ={{myForm.input.$error}}</tt><br>
+        <tt>myForm.$valid ={{myForm.$valid}}</tt><br>
+        <tt>myForm.$error.required ={{!!myForm.$error.required }}</tt><br>
+
+    </form>
+</body>
+</html>

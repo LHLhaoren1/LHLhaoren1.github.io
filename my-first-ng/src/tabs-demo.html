@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ngClass-demo</title>
+
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="../bower_components/angular-material/angular-material.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../bower_components/svg-assets-cache/svg-assets-cache.js"></script>
+    <link href="../bower_components/angular-material/angular-material.css" rel="stylesheet"/>
+
+    <!--<link href="https://material.angularjs.org/1.1.0-rc.5/docs.css"/>-->
+    <link rel="stylesheet" href="tabs-demo.css">
+    <script>
+        angular.module('dialogDemo1', ['ngMaterial'])
+                .controller('AppCtrl', function ($scope, $mdDialog, $mdMedia) {
+                    $scope.status = '  ';
+                    $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+
+
+                    $scope.showAdvanced = function (ev) {
+                        var useFullScreen = ($mdMedia('sm') || $mdMedia('xs')) && $scope.customFullscreen;
+                        $mdDialog.show({
+                                    controller: DialogController,
+                                    templateUrl: 'dialog1.tmpl.html',
+                                    parent: angular.element(document.body),
+                                    targetEvent: ev,
+                                    clickOutsideToClose: true,
+                                    fullscreen: useFullScreen
+                                })
+                                .then(function (answer) {
+                                    $scope.status = 'You said the information was "' + answer + '".';
+                                }, function () {
+                                    $scope.status = 'You cancelled the dialog.';
+                                });
+                        $scope.$watch(function () {
+                            return $mdMedia('xs') || $mdMedia('sm');
+                        }, function (wantsFullScreen) {
+                            $scope.customFullscreen = (wantsFullScreen === true);
+                        });
+                    };
+
+
+                });
+        function DialogController($scope, $mdDialog) {
+            $scope.hide = function () {
+                $mdDialog.hide();
+            };
+            $scope.cancel = function () {
+                $mdDialog.cancel();
+            };
+            $scope.answer = function (answer) {
+                $mdDialog.hide(answer);
+            };
+        }
+    </script>
+    <style>
+
+      /*  //模态窗口*/
+
+    </style>
+</head>
+<body ng-app="dialogDemo1">
+
+<div ng-controller="AppCtrl" class="md-padding" id="popupContainer" ng-cloak>
+    <div class="dialog-demo-content" layout="row" layout-wrap layout-margin layout-align="center">
+        <md-button class="md-primary md-raised" ng-click="showAdvanced($event)">
+            Custom Dialog
+        </md-button>
+    </div>
+</div>
+
+</body>
+</html>

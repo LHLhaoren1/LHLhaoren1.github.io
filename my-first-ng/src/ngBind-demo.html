@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ngBind-demo</title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+        angular.module('bindExample',[]).controller('ExampleController',['$scope',function ($scope) {
+            $scope.name='liangliang';
+        }]);
+    </script>
+</head>
+<body ng-app="bindExample">
+    <div ng-controller="ExampleController">
+        Enter name:<input type="text" ng-model="name"><br>
+        Hello <span ng-bind="name"></span>
+    </div>
+</body>
+</html>

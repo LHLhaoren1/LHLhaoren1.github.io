@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>input-radio-demo</title>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script>
+
+        angular.module('radioExample', []).controller('ExampleController', ['$scope', function ($scope) {
+            $scope.color = {
+                name: 'red'
+            };
+            $scope.specialValue = {
+                'id': '12345',
+                "value": "green"
+            }
+        }]);
+    </script>
+</head>
+<body ng-app="radioExample">
+<form name="myForm" ng-controller="ExampleController">
+    <input type="radio" ng-model="color.name" value="red"/> red<br>
+    <input type="radio" ng-model="color.name" ng-value="specialValue">Green<br>
+    <input type="radio" ng-model="color.name" value="blue"/>blue<br>
+    <tt>color ={{color.name | json}}</tt>
+</form>
+Note that `ng-value="specialValue"` sets radio item's value to be the value of `$scope.specialValue`.
+</body>
+
+
+</html>

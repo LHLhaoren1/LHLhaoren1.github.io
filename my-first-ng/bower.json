@@ -16,6 +16,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular-material": "v1.1.0-rc.5"
+    "angular-material": "v1.1.0-rc.5",
+    "angular-route": "^1.5.6",
+    "svg-assets-cache.js": "svg-assets-cache#*",
+    "angular-qrcode": "^6.2.1"
   }
 }

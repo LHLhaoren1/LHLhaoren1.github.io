@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>form demo</title>
+
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css"/>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.js"></script>
+    <script src="../bower_components/angular-material/angular-material.js"></script>
+    <script>
+        angular.module('formExample', ['ngMaterial'])
+                .controller('FormController', ['$scope', function ($scope) {
+                    $scope.userType = 'liangliang';
+                }])
+
+    </script>
+    <style>
+        .d {
+            border: 1px solid red;
+        }
+
+        .d > div {
+            border: 1px solid red;
+        }
+
+        .p5 {
+            width: 5%;
+        }
+
+        .p10 {
+            width: 10%;
+        }
+
+        .p60 {
+            width: 60%;
+        }
+
+        .tb td, .tb table td {
+            border-collapse: collapse;
+            border: 1px solid #9CF;
+            text-align: center;
+        }
+    </style>
+</head>
+<body ng-app="formExample">
+
+
+<div class="tb-header d" layout="row">
+    <div flex="5">header1</div>
+    <div flex="60">header2</div>
+    <div flex="5">header3</div>
+    <div flex="5">header4</div>
+    <div flex="10">header5</div>
+    <div flex="5">header6</div>
+    <div flex="5">header7</div>
+    <div flex="5">header8</div>
+</div>
+
+
+<br/>
+<div class="tb-header d" layout="row">
+    <div flex="5">header1</div>
+    <div flex="60">header2</div>
+    <div flex="5">header3</div>
+    <div flex="5">header4</div>
+    <div flex="10">header5</div>
+    <div flex="5">header6</div>
+    <div flex="5">header7</div>
+    <div flex="5">header8</div>
+</div>
+
+<br/>
+<div class="tb-header d" layout="row">
+    <div flex="5">header1</div>
+    <div flex="60">header2</div>
+    <div flex="5">header3</div>
+    <div flex="5">header4</div>
+    <div flex="10">header5</div>
+    <div flex="5">header6</div>
+    <div flex="5">header7</div>
+    <div flex="5">header8</div>
+</div>
+
+
+<table layout="row">
+    <tr flex layout="row">
+        <td flex="5">图标1</td>
+        <td flex="60">图标2</td>
+        <td flex="5">图标3</td>
+        <td flex="5">图标4</td>
+        <td flex="10">图标5</td>
+        <td flex="5">图标6</td>
+        <td flex="5">图标7</td>
+        <td flex="5">图标8</td>
+    </tr>
+</table>
+
+
+<div>1111111111111111111111111</div>
+
+<table class="tb">
+    <tbody>
+    <tr class="frist-tr">
+        <td class="p5">图标1</td>
+        <td class="p60">图标2</td>
+        <td class="p5">图标3</td>
+        <td class="p5">图标4</td>
+        <td class="p10">图标5</td>
+        <td class="p5">图标6</td>
+        <td class="p5">图标7</td>
+        <td class="p5">图标8</td>
+    </tr>
+    <tr class="frist-tr">
+        <td colspan="8">
+            <table>
+                <tr class="row">
+                    <td class="p5">图标1</td>
+                    <td class="p60">图标2</td>
+                    <td class="p5">图标3</td>
+                    <td class="p5">图标4</td>
+                    <td class="p10">图标5</td>
+                    <td class="p5">图标6</td>
+                    <td class="p5">图标7</td>
+                    <td class="p5">图标8</td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>

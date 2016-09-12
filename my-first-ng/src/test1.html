@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+</head>
+<style>
+    .sky {
+        color: white;
+        background-color: lightblue;
+        padding: 20px;
+        font-family: "Courier New";
+    }
+
+    .tomato {
+        background-color: coral;
+        padding: 40px;
+        font-family: Verdana;
+    }
+</style>
+<body ng-app="">
+
+<p>选择一个类:</p>
+
+<select ng-model="home">
+    <option value="sky">天空色</option>
+    <option value="tomato">番茄色</option>
+</select>
+
+<div >
+    <input type="text" ng-model="user" >
+    {{user}} - {{user.length}}
+</div>
+
+<md-button class="md-login-button" aria-label="Custom Icon Button"  ng-class="{sky:user.length>3}">
+    <span>登录</span>
+</md-button>
+
+
+
+<div ng-class="home">
+    <h1>Welcome Home!</h1>
+    <p>I like it!</p>
+</div>
+
+
+<!--<div class="relative" ng-model="home">
+    <input type="text" data-ng-model="user.j_username" placeholder="手机号/用户名/邮箱" ng-keydown="keyupText()">
+    <md-icon md-font-set="ks-icon" class="close" ng-click="clearText(1)"
+             ng-if="user.j_username">close
+    </md-icon>
+</div>
+
+<md-button ng-class="home" class="md-login-button" aria-label="Custom Icon Button" ng-click="login()">
+    <span>登录</span>
+</md-button>-->
+</body>
+</html>
