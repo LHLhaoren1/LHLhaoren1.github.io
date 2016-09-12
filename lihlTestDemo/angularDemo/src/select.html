@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../bower_components/angular/angular.js"></script>
+<body ng-app="myApp" ng-controller="myCtrl">
+
+    <span>使用ng-options创建下拉列表:</span>
+    <select ng-options="x for x in name" ng-model="name">
+
+    </select>
+    <br>
+    <span>使用ng-repeat创建下拉列表:</span>
+    <select >
+        <option ng-repeat="x in name">{{x}}</option>
+    </select>
+</body>
+
+<script>
+     var app=angular.module('myApp',[]);
+    app.controller('myCtrl',function ($scope) {
+        $scope.name=['张三','李四','王五','赵六'];
+    });
+</script>
+</html>

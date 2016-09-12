@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../bower_components/angular/angular.js"></script>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <h1>{{carname}}</h1>
+    <div>
+        <span>我的名字是:{{username}}</span>
+    </div>
+</body>
+
+<ul>
+    <li ng-repeat="arr in arrList track by $index">{{arr}}-{{$index}}---{{lastname}}</li>
+</ul>
+
+
+
+<script>
+    var app=angular.module('myApp',[]);
+
+    app.controller('myCtrl',function ($scope,$rootScope) {
+        $scope.carname='LHL BMW';
+        $scope.username='梦扬';
+        $scope.arrList=['aaa','bbb','ccc']
+        $scope.lastname = "test";
+    })
+</script>
+</html>

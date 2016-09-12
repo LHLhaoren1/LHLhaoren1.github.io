@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../bower_components/angular/angular.js"></script>
+<body>
+<div ng-app="myApp" ng-controller="personCtrl">
+    <div>
+           <button ng-if="myToggle==true" ng-click="toggle()">显示</button>
+           <button ng-if="myToggle==false" ng-click="toggle()">隐藏</button>
+    </div>
+    <div ng-hide="myToggle">
+        <p>姓: <span>{{firstName}}</span></p>
+        <p>名:<span>{{lastName}}</span></p>
+        <p>姓名:<span>{{firstName}}{{lastName}}</span></p>
+    </div>
+</div>
+</body>
+    <script>
+        var app = angular.module('myApp',[]);
+        app.controller('personCtrl',function ($scope) {
+            $scope.firstName='沉沦';
+            $scope.lastName='迷恋';
+            $scope.myToggle=false;
+            $scope.toggle=function () {
+                $scope.myToggle=!$scope.myToggle;
+            }
+        });
+    </script>
+</html>

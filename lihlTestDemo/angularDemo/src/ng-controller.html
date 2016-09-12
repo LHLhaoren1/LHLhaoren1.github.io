@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../bower_components/angular/angular.js"></script>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <div>
+        <p>姓:{{firstName}}</p>
+        <p>名:{{lastName}}</p>
+        <p>姓名是:{{firstName}}{{lastName}}</p>
+        <p>(方法调用)姓名是:{{name()}}</p>
+        <p>英文名字:{{USAfirstName | lowercase}}{{USAfirstName | uppercase}}</p>
+        <p>{{USAfirstName | lowercase}}{{USAfirstName | uppercase}}身价{{price | currency}}</p>
+
+    </div>
+<ul>
+    <li ng-repeat="arr in arrList ">{{arr }}</li>
+</ul>
+<hr>
+<span>我的链接地址:{{myUrl}}</span>
+<hr>
+
+</body>
+<h1>$timeout应用</h1>
+<p>myHeader:{{myHeader}}</p>
+
+</body>
+<h1>$interval应用</h1>
+<p>theTime:{{theTime}}</p>
+<script>
+    var app= angular.module('myApp',[]);
+    app.controller('myCtrl',function ($scope,$location,$timeout,$interval) {
+        $scope.firstName='沉沦';
+        $scope.lastName='迷恋';
+
+        $scope.name=function () {
+            return $scope.firstName+$scope.lastName;
+        }
+
+        $scope.USAfirstName='ChenLun';
+        $scope.USAlastName='MiLian';
+        $scope.price=100000000000;
+        $scope.arrList=['19','2','156','8','421','321','3','74','35','84','98','11','101','206'];
+        $scope.arr=['19','2','156'];
+        $scope.myUrl = $location.absUrl();
+
+        $scope.myHeader = "Hello World!";
+        $timeout(function () {
+            $scope.myHeader = "How are you today?";
+        }, 2000);
+
+
+        $scope.theTime = new Date().toLocaleTimeString();
+        $interval(function () {
+            $scope.theTime = new Date().toLocaleTimeString();
+        }, 1000);
+    });
+</script>
+</html>

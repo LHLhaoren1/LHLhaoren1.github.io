@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../bower_components/angular/angular.js"></script>
+<script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+<body  ng-app='myApp' ng-controller="MyController" >
+<div></div>
+    <diy>
+
+    </diy>
+
+</body>
+    <script>
+        var app=angular.module('myApp', ['ngSanitize']);
+        app.directive('diy',function () {
+            return {
+                restrict:'EA',
+                replace:true,
+                template:'<div class="itemClass" ng-if="item.price > 0"  ng-repeat="item in items" style="margin-bottom: 10px;background: yellow" ><ul ><li>{{item.name}}</li><li><img ng-src="{{item.img}}"/></li><li ng-bind-html="$sce.trustAsHtml(item.description)"> </li></ul></div>',
+            }
+        });
+        app.controller('MyController',function($scope,$sce) {
+            $scope.$sce=$sce;
+            $scope.items = [{
+                        name:"枕头1",
+                        price:101,
+                        img:"http://www.baidu.com/xxx.png",
+                        description:"好枕头1，<span  style='color:red;' onclick='alert(111)'>低价卖1</span>, 快来买1"
+
+                    },{name:"枕头2",
+                        price:101,
+                        img:"http://www.baidu.com/xxx.png",
+                        description:"好枕头2，<span style='color:blueviolet;' onclick='alert(222)'>低价卖2</span>, 快来买2"
+                    },{
+                        name:"枕头3",
+                        price:101,
+                        img:"http://www.baidu.com/xxx.png",
+                        description:"好枕头3，<span  style='color:green;' onclick='alert(333)'>低价卖3</span>, 快来买3"
+                    }];
+
+
+        });
+    </script>
+
+</html>
